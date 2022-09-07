@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="https://www.google.com/s2/favicons?domain=css-tricks.com">
+    <link rel="stylesheet" href="style.css" />
+    <title>Financial Manager</title>
+</head>
+<body>
+    <div class="wallet">Placeholder for wallet.</div>
+    <div class="add-account-modal">
+        <!-- Form for adding account -->
+         <form id="form">
+            <h2>Add an account to your wallet</h2>
+            <div class="form-group">
+                <label for="card-holder">Card Holder Name</label>
+                <input type="text" id="card-holder" name="card-holder" placeholder="Enter Full Name" required>
+            </div>
+            <div class="form-group">
+                <label for="account-number">Account Number</label>
+                <input type="number" id="account-number" name="account-number" placeholder="Enter Account Number" required>
+            </div>
+            <div class="form-group">
+                <label for="expiry-date">Expiry Date</label>
+                <input type="date" id="expiry-date" name="expiry-date" required>
+            </div>
+            <div class="form-group">
+                <label for="card-network">Card Network</label>
+                <select id="card-network" name="card-network" required>
+                    <option value="visa">Visa</option>
+                    <option value="mastercard">Mastercard</option>
+                    <option value="american-express">American Express</option>
+                    <option value="discover">Discover</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="balance">Balance</label>
+                <input type="number" id="balance" name="balance" placeholder="Enter Amount" required>
+            </div>
+            <button class="add-account-info">Add Account</button>
+        </form>
+        <button class="add-account">+</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
