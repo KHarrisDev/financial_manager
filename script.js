@@ -1,9 +1,20 @@
 "use strict";
+function getInputValue() {
+    let cardHolderValue = document.getElementById('card-holder').value;
+    let accountNumber = document.getElementById('account-number').value;
+    let expiryDate = document.getElementById('expiry-date').value;
+    let cardNetwork = document.getElementById('card-network').value;
+    let balance = document.getElementById('balance').value;
+    
+    console.log(cardHolderValue);
+    console.log(accountNumber);
+    console.log(expiryDate);
+    console.log(cardNetwork);
+    console.log(balance);
 
-// Button used to add account to wallet
-const addAccount = document.querySelector('.add-account');
-addAccount.addEventListener('click', function() {
+    // create an object with the rest of inputs
+    // test the inputs and the object
+    // push to array to display card
+}
 
-});
-//console.log(addAccount.textContent);
-const wallet = [];
+// close module
