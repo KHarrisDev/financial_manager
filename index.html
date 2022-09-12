@@ -9,14 +9,20 @@
     <title>Financial Manager</title>
 </head>
 <body>
-    <div class="container">
+    <div id="container">
         <div class="wallet">
-            <h1>Choose your account.</h1>
+            <h1 class="choose-account-header">Choose your account.</h1>
+            <h1 class="create-account-header">Create your account.</h1>
             <div class="account-card">
-                <h2>Card Holder Name</h2>
+                <h3>Card Holder Name: John Doe</h3>
+                <h3>Account Number: 9876543210123456</h3>
+                <h3>Expiry Date: 01/01/3001</h3>
+                <h3>Card Network: Discover</h3>
+                <h3>Balance: 123456789</h3>
             </div>
+            <button type="submit" class="btn create-account">Create Account</button>
         </div>
-        <div class="add-account-modal hidden">
+        <div class="add-account-modal">
             <!-- Form for adding account -->
                 <h2>Add an account to your wallet</h2>
                 <div class="form-group">
@@ -47,7 +53,6 @@
                 <button class="btn add-account" type="button">Add Account</button>
         </div>
     </div>
-    
     <script src="script.js"></script>
 </body>
 </html>
