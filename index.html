@@ -10,19 +10,20 @@
 </head>
 <body>
     <div id="container">
-        <div class="wallet">
-            <h1 class="choose-account-header">Choose your account.</h1>
-            <h1 class="create-account-header">Create your account.</h1>
-            <div class="account-card">
-                <h3>Card Holder Name: John Doe</h3>
+        <div class="wallet hidden">
+            <h1 class="choose-account-header hidden">Choose your account.</h1>
+            <h1 class="create-account-header hidden ">Create your account.</h1>
+            <h3 class="message user-accounts hidden">Your wallet is empty. Please add account</h3>
+            <div class="account-card hidden">
+                <!-- <h3>Card Holder Name: John Doe</h3>
                 <h3>Account Number: 9876543210123456</h3>
                 <h3>Expiry Date: 01/01/3001</h3>
                 <h3>Card Network: Discover</h3>
-                <h3>Balance: 123456789</h3>
+                <h3>Balance: 123456789</h3> -->
             </div>
-            <button type="submit" class="btn create-account">Create Account</button>
+            <button type="submit" class="btn create-account hidden">Create Account</button>
         </div>
-        <div class="add-account-modal">
+        <div class="add-account-modal hidden">
             <!-- Form for adding account -->
                 <h2>Add an account to your wallet</h2>
                 <div class="form-group">

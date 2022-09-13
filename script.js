@@ -1,50 +1,43 @@
 "use strict";
-
+const container = document.getElementById('container');
 const userAccounts = [];
+const wallet = document.querySelector('.wallet');
+const accountCard = document.querySelector('.account-card');
+const addAccountModal = document.querySelector('.add-account-modal');
+const createAccountHeader = document.querySelector('.create-account-header');
+const chooseAccountHeader = document.querySelector('.choose-account-header');
+const message = document.querySelector('.message');
+// Buttons
+const btn = document.querySelector('.btn');
+const btnCreateAccount = document.querySelector('.create-account');
+const btnAddAccount = document.querySelector('.add-account');
 
 function init() {
+    wallet.classList.remove('hidden');
     console.log(userAccounts.length);
     if (userAccounts.length <= 0) {
+        createAccountHeader.classList.remove('hidden');
+        message.classList.remove('hidden');
+        btnCreateAccount.classList.remove('hidden');
         console.log(`userAccounts array has ${userAccounts.length} objects.`);
     } else {
+        accountCard.classList.remove('hidden');
+        // wallet.classList.remove('hidden');
         console.log(`Updated userAccounts array has ${userAccounts.length} objects.`);
+        console.log(`Dynamically render the data here`);
+        console.log('Create an html template');
     }
 }
-
 init();
 
-/*
-Page should start out with 'Create your account' header and create account button
+function createAccount(event) {
+    event.preventDefault();
+    wallet.classList.add('hidden');
+    addAccountModal.classList.remove('hidden');
+}
+btnCreateAccount.addEventListener('click', createAccount);
 
-if there is no account
-    (create class names for the headers)
-    display 'Create your account' header,
-    display text that say 'Your wallet is empty' animation coming soon
-    display Create Account button to render modal class
-        * Create a div for a card that holds account information.
-        * Add elements in the card that serve as a placeholder for account information.
-        * In script.js, add a function for rendering account information dynamically.
-        * In this function, create a const that contains a html template for the card.
-        * Insert the template in the HTML
-    hide 'Choose your account' header,
-    hide the account-card class 
-    else
-        Display 'Choose your account' header,
-        display Create Account button to render modal class
-        Display account in array that dynamically render new cards
-        hide 'Create your account' header,
- */            
-
-const container = document.getElementById('container');
-const wallet = document.querySelector('.wallet');
-const createAccountButton = document.querySelector('.create-account');
-const btn = document.querySelector('.btn');
-const addAccountButton = document.querySelector('.add-account');
-
-// Added accounts from clickNewAccount()
-
-
-function clickNewAccount(event) {
+function addNewAccount(event) {
     event.preventDefault();
 
     const cardHolderInput = document.querySelector('.card-holder');
@@ -62,18 +55,37 @@ function clickNewAccount(event) {
         transactions: [],
     }
 
-    // console.log(newAccount);
     userAccounts.push(newAccount);
-    // console.log(userAccounts);
 
+    // Form reset
+    // Add another button to submit input & immediately add another user
     cardHolderInput.value = '';
     accountNumberInput.value = '';
     expiryDateInput.value = '';
     cardNetworkInput.value = '';
     balanceInput.value = '';
 
+    addAccountModal.classList.add('hidden');
+    createAccountHeader.classList.add('hidden');
+    message.classList.add('hidden');
+    chooseAccountHeader.classList.remove('hidden');
+    
     init();
+    displayAccounts(userAccounts);
 }
+btnAddAccount.addEventListener('click', addNewAccount);
 
-// use forEach loop to clear form when using DRY
-addAccountButton.addEventListener('click', clickNewAccount);
+function displayAccounts(accounts) {
+    accounts.forEach(function(user) {
+        const htmlTemplate = `
+            <div class="account-card">
+                <h3>Card Holder Name: ${user.cardHolderInput}</h3>
+                <h3>Account Number: ${user.accountNumberInput}</h3>
+                <h3>Expiry Date: ${user.expiryDateInput}</h3>
+                <h3>Card Network: ${user.cardNetworkInput}</h3>
+                <h3>Balance: ${user.balanceInput}</h3>
+            </div>
+        `;
+        accountCard.insertAdjacentHTML('afterbegin', htmlTemplate);
+    });
+}
