@@ -21,7 +21,14 @@
                 <h3>Card Network: Discover</h3>
                 <h3>Balance: 123456789</h3> -->
             </div>
-            <button type="submit" class="btn create-account hidden">Create Account</button>
+            <button type="submit" class="btn btn-create-account hidden">Create Account</button>
+        </div>
+        <div class="transactions-list">
+            <h2>List of Transactions</h2>
+            <div class="transaction-cards"></div>
+            <button class="btn btn-add-transaction">Add Transaction</button>
+            <button class="btn btn-delete-transaction">Delete Transaction</button>
+            <button class="btn btn-update-transaction">Update Transaction</button>
         </div>
         <div class="add-account-modal hidden">
             <!-- Form for adding account -->
@@ -51,7 +58,7 @@
                     <label for="balance">Balance</label>
                     <input type="number" class=" input balance" name="balance" placeholder="Enter Amount">
                 </div>
-                <button class="btn add-account" type="button">Add Account</button>
+                <button class="btn btn-add-account" type="button">Add Account</button>
         </div>
     </div>
     <script src="script.js"></script>

@@ -1,6 +1,16 @@
 "use strict";
-const container = document.getElementById('container');
+
+/*
+    const DUMMY_OBJECT = {};
+*/ 
+const generateID = () => {
+    const accountID = Math.floor(Math.random() * 100000) + 1;
+    return accountID;
+};
+
 const userAccounts = [];
+
+const container = document.getElementById('container');
 const wallet = document.querySelector('.wallet');
 const accountCard = document.querySelector('.account-card');
 const addAccountModal = document.querySelector('.add-account-modal');
@@ -9,8 +19,9 @@ const chooseAccountHeader = document.querySelector('.choose-account-header');
 const message = document.querySelector('.message');
 // Buttons
 const btn = document.querySelector('.btn');
-const btnCreateAccount = document.querySelector('.create-account');
-const btnAddAccount = document.querySelector('.add-account');
+const btnCreateAccount = document.querySelector('.btn-create-account');
+const btnAddAccount = document.querySelector('.btn-add-account');
+
 
 function init() {
     wallet.classList.remove('hidden');
@@ -21,11 +32,14 @@ function init() {
         btnCreateAccount.classList.remove('hidden');
         console.log(`userAccounts array has ${userAccounts.length} objects.`);
     } else {
+        console.log(userAccounts.length);
         accountCard.classList.remove('hidden');
-        // wallet.classList.remove('hidden');
+        btnCreateAccount.textContent = 'Add Another Account';
+        //create a for loop to cycle through the accounts
+        //add arrows to the accountCard class
+        console.log(userAccounts[0].transactions[0]);
         console.log(`Updated userAccounts array has ${userAccounts.length} objects.`);
-        console.log(`Dynamically render the data here`);
-        console.log('Create an html template');
+        console.log('add arrows to cycle through accounts');
     }
 }
 init();
@@ -48,13 +62,14 @@ function addNewAccount(event) {
 
     const newAccount = {
         cardHolderInput: cardHolderInput.value,
-        accountNumberInput: accountNumberInput.value,
-        expiryDateInput: expiryDateInput.value,
+        accountNumberInput: Number(accountNumberInput.value),
+        expiryDateInput: new Date(expiryDateInput.value).toLocaleDateString(),
         cardNetworkInput: cardNetworkInput.value,
-        balanceInput: balanceInput.value,
-        transactions: [],
+        balanceInput: Number(balanceInput.value),
+        memberID: Number(generateID()),
+        transactions: [222],
     }
-
+    console.log(newAccount);
     userAccounts.push(newAccount);
 
     // Form reset
