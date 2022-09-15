@@ -3,29 +3,28 @@
 /*
     const DUMMY_OBJECT = {};
 */ 
-const generateID = () => {
-    const accountID = Math.floor(Math.random() * 100000) + 1;
-    return accountID;
-};
 
 const userAccounts = [];
 
 const container = document.getElementById('container');
 const wallet = document.querySelector('.wallet');
+const accounts = document.querySelector('.accounts');
 const accountCard = document.querySelector('.account-card');
 const addAccountModal = document.querySelector('.add-account-modal');
 const createAccountHeader = document.querySelector('.create-account-header');
 const chooseAccountHeader = document.querySelector('.choose-account-header');
 const message = document.querySelector('.message');
+
 // Buttons
 const btn = document.querySelector('.btn');
 const btnCreateAccount = document.querySelector('.btn-create-account');
 const btnAddAccount = document.querySelector('.btn-add-account');
+const btnPrev = document.querySelector('.btn-prev');
+const btnNext = document.querySelector('.btn-next');
 
 
 function init() {
     wallet.classList.remove('hidden');
-    console.log(userAccounts.length);
     if (userAccounts.length <= 0) {
         createAccountHeader.classList.remove('hidden');
         message.classList.remove('hidden');
@@ -33,8 +32,13 @@ function init() {
         console.log(`userAccounts array has ${userAccounts.length} objects.`);
     } else {
         console.log(userAccounts.length);
+        accounts.classList.remove('hidden');
         accountCard.classList.remove('hidden');
         btnCreateAccount.textContent = 'Add Another Account';
+        btnPrev.classList.remove('hidden');
+        btnNext.classList.remove('hidden');
+        
+        //if (userAccount[0])
         //create a for loop to cycle through the accounts
         //add arrows to the accountCard class
         console.log(userAccounts[0].transactions[0]);
@@ -44,12 +48,28 @@ function init() {
 }
 init();
 
+function cycleAccounts() {
+    let validateCycle;
+    if (userAccounts > 0) {
+        validateCycle = true;
+    } else {
+        validateCycle = false;
+    }
+    return validateCycle;
+}
+cycleAccounts();
+
 function createAccount(event) {
     event.preventDefault();
     wallet.classList.add('hidden');
     addAccountModal.classList.remove('hidden');
 }
 btnCreateAccount.addEventListener('click', createAccount);
+
+const generateID = () => {
+    const accountID = Math.floor(Math.random() * 100000) + 1;
+    return accountID;
+};
 
 function addNewAccount(event) {
     event.preventDefault();
@@ -86,14 +106,21 @@ function addNewAccount(event) {
     chooseAccountHeader.classList.remove('hidden');
     
     init();
+
     displayAccounts(userAccounts);
 }
 btnAddAccount.addEventListener('click', addNewAccount);
 
-function displayAccounts(accounts) {
-    accounts.forEach(function(user) {
+function displayAccounts(acc) {
+    //create a variable thats a counter
+    //create event handlers that increment/decrement the counter
+    //once clicked, the eventlistener calls displayAccount() with the new increment/decrement set for i
+    //create the for loop with initial variable being the counter
+
+    console.log(acc);
+    acc.forEach(function(user) {
         const htmlTemplate = `
-            <div class="account-card">
+            <div class="account-card hidden">
                 <h3>Card Holder Name: ${user.cardHolderInput}</h3>
                 <h3>Account Number: ${user.accountNumberInput}</h3>
                 <h3>Expiry Date: ${user.expiryDateInput}</h3>
@@ -101,6 +128,6 @@ function displayAccounts(accounts) {
                 <h3>Balance: ${user.balanceInput}</h3>
             </div>
         `;
-        accountCard.insertAdjacentHTML('afterbegin', htmlTemplate);
+        accounts.insertAdjacentHTML('afterbegin', htmlTemplate);
     });
 }
